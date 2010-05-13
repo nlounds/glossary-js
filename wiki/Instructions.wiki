@@ -8,6 +8,7 @@ You need to put jquery.js then glossary.js in your page, in that order.  Then de
   * *glossary.txt* - your list of terms with definitions. Each term must be on its own line. Your definitions can contain valid HTML, but NO extra line breaks. I suggest that you keep your terms in alphabetical order.
   * *glossary.js* - parses the document and looks for elements with class="glossary" or class="highlightSpan" and makes them interactive.  Also loads content from glossary.txt in the element with the id="GlossaryJS"
   * *glossary.min.js* - compressed version of glossary.js for quicker downloads.
+* *jquery.highlight.js* - used for searching the web page for glossary terms and tagging them automatically
 
 == The Variables ==
 *var GlossaryJS_css* - this is the path to glossary.css.  By default the script will look for it in the same folder as the web page calling it.
@@ -16,6 +17,7 @@ You need to put jquery.js then glossary.js in your page, in that order.  Then de
 
 *var GlossaryJS_section* - use this variable to have more than one definition for the same term.  The script will use the one from the glossary whose section matches this value.
 
+*var GlossaryJS_autohighlight* - set this variable to true to enable auto-highlighting.  With this feature enabled the script will highlight terms for you.  It is turned off by default because it requires extra parsing on page load.
 
 == Sample HTML ==
 
@@ -27,30 +29,31 @@ You need to put jquery.js then glossary.js in your page, in that order.  Then de
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Glossary Test</title>
 <script type="text/javascript" src="/path_to_your_glossary_files/jquery.js"></script>
+<script type="text/javascript" src="/path_to_your_glossary_files/jquery.highlight.js"></script>
 <script type="text/javascript" src="/path_to_your_glossary_files/glossary.min.js"></script>
 <script type="text/javascript">
 var GlossaryJS_css = "/path_to_your_glossary_files/glossary.css";
 var GlossaryJS_txt = "/path_to_your_glossary_files/glossary.txt";
-var GlossaryJS_section = "Section 1";  
+var GlossaryJS_section = "Section 1";
+var GlossaryJS_autohighlight = true;
 </script>
 </head>
 <body>
 <h1>Glossary-JS</h1>
 <h2>Example Terms</h2>
-<p>This is a tool we've developed to allow <span class="highlightSpan">ANGEL</span> 
+<p>This is a tool we've developed to allow ANGEL
 course developers to create a glossary of terms and tag instances of those terms in the
  course content.  Then when users mouse over terms the glossary definition of the term 
-will be displayed.  This tool uses <span class="highlightSpan">JavaScript</span>, <span 
-class="highlightSpan">AJAX</span> and <span class="highlightSpan">CSS</span> to make the 
+will be displayed.  This tool uses JavaScript, AJAX and CSS to make the 
 content interactive.  Mouse over the terms in the previous sentence to see this tool in 
 action.</p>
 
-<p>This tool does not require a database.  Though it is designed for use in the <span 
-class="highlightSpan">ANGEL</span> <span class="highlightSpan">LMS</span>, it could be 
+<p>This tool does not require a database.  Though it is designed for use in the ANGEL LMS, it could be 
 used in any web site.</p>
 
 <h2>Example of Entire Glossary</h2>
 <div id="GlossaryJS"></div>
+
 </body>
 </html>
 
